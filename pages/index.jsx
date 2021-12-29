@@ -1,5 +1,6 @@
 import React, { useReducer, useState } from "react";
 import { Button, TextField } from "@material-ui/core";
+import Header from "../components/header";
 
 const initialState = { count: 2 };
 
@@ -47,40 +48,98 @@ export default function Reducer({ valor }) {
   }
 
   return (
-    <div>
-      <h3>Counter com useReducer</h3>
+    <>
+        <Header />
 
-      <br />
-      <Button disabled={edita} variant="contained" color="primary" type="button" onClick={() => dispatch({ type: actions.increment })}>+</Button>
-      <Button disabled={edita} variant="contained" color="primary" type="button" onClick={() => dispatch({ type: actions.decrement })}>-</Button>
-      <Button disabled={edita} variant="contained" color="primary" type="button" onClick={() => dispatch({ type: actions.double })}>*2</Button>
-      <Button disabled={edita} variant="contained" color="primary" type="button" onClick={() => dispatch({ type: actions.half })}>/2</Button>
-      <Button disabled={edita} variant="contained" color="primary" type="button" onClick={() => dispatch({ type: actions.reset })}>reset</Button>
-      <br />
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="custom_value">Count: </label>
+      <div>
+        <h3>Counter com useReducer</h3>
 
-        {!edita && (
-          <div>
-            <label onClick={() => haldleEditaValor}>
-              {state.count}
-            </label>
-            <Button variant="contained" color="primary" type="button" onClick={haldleEditaValor}>Editar</Button>
-          </div>
-        )}
-        {edita && (
-          <div>
-            <TextField
-              id="custom_value"
-              type="number"
-              value={customCount}
-              onChange={(e) => setCustomCount(e.target.value)}
-            />{" "}
-            <Button variant="contained" color="primary" type="submit">Salvar</Button>
-            <Button variant="contained" color="primary" type="button" onClick={haldleEditaValor}>Cancelar</Button>
-          </div>
-        )}
-      </form>
-    </div>
+        <br />
+        <Button
+          disabled={edita}
+          variant="contained"
+          color="primary"
+          type="button"
+          onClick={() => dispatch({ type: actions.increment })}
+        >
+          +
+        </Button>
+        <Button
+          disabled={edita}
+          variant="contained"
+          color="primary"
+          type="button"
+          onClick={() => dispatch({ type: actions.decrement })}
+        >
+          -
+        </Button>
+        <Button
+          disabled={edita}
+          variant="contained"
+          color="primary"
+          type="button"
+          onClick={() => dispatch({ type: actions.double })}
+        >
+          *2
+        </Button>
+        <Button
+          disabled={edita}
+          variant="contained"
+          color="primary"
+          type="button"
+          onClick={() => dispatch({ type: actions.half })}
+        >
+          /2
+        </Button>
+        <Button
+          disabled={edita}
+          variant="contained"
+          color="primary"
+          type="button"
+          onClick={() => dispatch({ type: actions.reset })}
+        >
+          reset
+        </Button>
+        <br />
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="custom_value">Count: </label>
+
+          {!edita && (
+            <div>
+              <label onClick={() => haldleEditaValor}>{state.count}</label>
+              <Button
+                variant="contained"
+                color="primary"
+                type="button"
+                onClick={haldleEditaValor}
+              >
+                Editar
+              </Button>
+            </div>
+          )}
+          {edita && (
+            <div>
+              <TextField
+                id="custom_value"
+                type="number"
+                value={customCount}
+                onChange={(e) => setCustomCount(e.target.value)}
+              />{" "}
+              <Button variant="contained" color="primary" type="submit">
+                Salvar
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                type="button"
+                onClick={haldleEditaValor}
+              >
+                Cancelar
+              </Button>
+            </div>
+          )}
+        </form>
+      </div>
+    </>
   );
 }
