@@ -9,7 +9,7 @@ function Home (){
     function incrementaHolder () {
         setValue(value + 1)
     }
-
+ 
     return (
         <div>
             Home
